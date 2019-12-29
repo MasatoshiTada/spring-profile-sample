@@ -17,6 +17,10 @@ public class DevAndProductionProfileTest {
     @Autowired
     ApplicationContext context;
 
+    /**
+     * devとproduction両方に同名プロパティがあっても実行時例外などにはなりませんが、
+     * なぜproductionの方の値が使われるかは不明です・・・
+     */
     @Test
     public void value1はProduction1(@Value("${sample.value1}") String value1) {
         assertEquals("Production1", value1);
