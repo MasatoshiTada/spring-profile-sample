@@ -18,8 +18,10 @@ public class DevAndProductionProfileTest {
     ApplicationContext context;
 
     /**
-     * devとproduction両方に同名プロパティがあっても実行時例外などにはなりませんが、
-     * なぜproductionの方の値が使われるかは不明です・・・
+     * devとproduction両方に同名プロパティがあっても実行時例外などにはなりません。
+     * 指定したプロファイルのうち最後に指定したもの（今回は"production"）が使われます。
+     * @ActiveProfiles({"production", "dev"}) とすると、
+     * sample.value1の値は"Dev1"になります。
      */
     @Test
     public void value1はProduction1(@Value("${sample.value1}") String value1) {
